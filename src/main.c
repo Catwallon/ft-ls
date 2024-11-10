@@ -3,11 +3,11 @@
 int main()
 {
 	DIR *dir = opendir(".");
+	struct dirent *entry;
 	if (!dir)
 		return (EXIT_FAILURE);
-	readdir(dir);
-	readdir(dir);
-	create_node(".", readdir(dir));
+	while ((entry = readdir(dir)))
+		create_node(".", entry);
 	closedir(dir);
 	return (EXIT_SUCCESS);
 }

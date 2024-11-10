@@ -4,9 +4,8 @@ struct node *create_node(char *path, struct dirent *entry)
 {
 	struct node *ret = malloc(sizeof(struct node));
 
-	char *tmp = ret->path = ft_strjoin(path, "/");
-	ret->path = ft_strjoin(tmp, entry->d_name);
-	free(tmp);
+	ret->path = ft_strjoin(path, "/");
+	ret->path = ft_strjoin(ret->path , entry->d_name);;
 	ret->entry = entry;
 	ret->childs = NULL;
 	if (entry->d_type == DT_DIR && ft_strcmp(entry->d_name, ".") && ft_strcmp(entry->d_name, ".."))

@@ -34,9 +34,37 @@ char *ft_strcat(char *dest, const char *src)
 	return (dest);
 }
 
+void *ft_memset(void *ptr, int value, size_t size)
+{
+	size_t i;
+	unsigned char *u_ptr;
+
+	i = -1;
+	u_ptr = (unsigned char *) ptr;
+	while (++i < size)
+		u_ptr[i] = (unsigned char) value;
+	return (ptr);
+}
+
+void *ft_bzero(char *ptr, size_t size)
+{
+	return (ft_memset(ptr, 0, size));
+}
+
+void *ft_calloc(int nb, size_t size)
+{
+	char *output;
+
+	output = (char *) malloc(nb * size);
+	if (!output)
+		return (NULL);
+	ft_bzero(output, nb * size);
+	return ((void *) output);
+}
+
 char *ft_strjoin(const char *str1, const char *str2)
 {
-	char *ret = malloc(ft_strlen(str1) + ft_strlen(str2) + 1);
+	char *ret = ft_calloc(ft_strlen(str1) + ft_strlen(str2) + 1, ft_strlen(str1) + ft_strlen(str2) + 1);
 	if (!ret)
 		return (NULL);
 	ft_strcat(ret, str1);
