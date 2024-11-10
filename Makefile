@@ -1,7 +1,7 @@
 NAME = ft_ls
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -D_DEFAULT_SOURCE -Wall -Wextra -Werror -g
 LD_FLAGS =
 
 BIN_DIR = bin

@@ -2,12 +2,12 @@
 
 int main()
 {
-	struct dirent *entry;
 	DIR *dir = opendir(".");
 	if (!dir)
 		return (EXIT_FAILURE);
-	while ((entry = readdir(dir)))
-		printf("%s ", entry->d_name);
+	readdir(dir);
+	readdir(dir);
+	create_node(".", readdir(dir));
 	closedir(dir);
 	return (EXIT_SUCCESS);
 }
