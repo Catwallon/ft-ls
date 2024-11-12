@@ -5,6 +5,19 @@
 #include <stdio.h>
 #include <string.h>
 #include <dirent.h>
+#include <errno.h>
+
+#define LIST 0x01
+#define RECURSIVE 0x02
+#define SHOW_HIDDEN 0x04
+#define SORT_TIME 0x08
+#define REVERSE 0x16
+
+struct ls
+{
+	int options;
+	char **files;
+};
 
 // node.c
 struct node
